@@ -1,0 +1,35 @@
+# Docker containers are intended to run a single app. Thus official OS container
+# images have minimal set of tools and settings so they can be easily configured
+# and efficient for running that particular app.
+
+# Build:  docker build -f "token2shell dockerfile.txt" -t token2shell/console .
+
+# Create: docker create -t -i --name token2shell_root token2shell/console bash
+
+FROM ubuntu
+
+ENV LANG C
+
+# Install commonly used command-line tools.
+
+RUN apt-get update && apt-get install --no-upgrade --assume-yes apt-utils openssh-client nvi wget zip unzip iputils-ping net-tools man-db
+
+# Download the official statically linked Docker executables in TGZ format,
+# and extract only the 'docker' client program.
+# To download the latest version, sort and egrep is used.
+
+RUN wget --progress=bar:force:noscroll -O- https://download.docker.com/linux/static/stable/x86_64/\
+$(wget -qO- https://download.docker.com/linux/static/stable/x86_64/ \
+| egrep -o "docker-[0-9\.]+\-ce.tgz" | sort -u | tail -1) \
+| tar xz -C /usr/bin/ --strip-components=1 docker/docker
+
+# Download the official statically linked kubectl executable
+
+# RUN wget --progress=bar:force:noscroll https://storage.googleapis.com/kubernetes-release/release/v1.10.3/bin/linux/amd64/kubectl -O /usr/bin/kubectl
+
+# RUN chmod 755 /usr/bin/kubectl
+
+# RUN mkdir /root/.kube/
+
+# RUN wget --progress=bar:force:noscroll http://192.168.101.80/Wrkspace/config -O /root/.kube/config
+
