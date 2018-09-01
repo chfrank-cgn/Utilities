@@ -25,11 +25,11 @@ $(wget -qO- https://download.docker.com/linux/static/stable/x86_64/ \
 
 # Download the official statically linked kubectl executable
 
-# RUN wget --progress=bar:force:noscroll https://storage.googleapis.com/kubernetes-release/release/v1.10.3/bin/linux/amd64/kubectl -O /usr/bin/kubectl
+RUN wget --progress=bar:force:noscroll https://storage.googleapis.com/kubernetes-release/release/v1.10.3/bin/linux/amd64/kubectl -O /usr/bin/kubectl
 
-# RUN chmod 755 /usr/bin/kubectl
+RUN chmod 755 /usr/bin/kubectl
 
-# RUN mkdir /root/.kube/
+RUN mkdir /root/.kube/
 
-# RUN wget --progress=bar:force:noscroll http://192.168.101.80/Wrkspace/config -O /root/.kube/config
+RUN wget --progress=bar:force:noscroll http://192.168.101.80/Wrkspace/config -O /root/.kube/config
 
