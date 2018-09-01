@@ -1,6 +1,5 @@
-# Utilities
+# My Utilities
 
-A repository for admin scripts, batch and yaml files
+A personal repository for admin scripts, batch and yaml files
 
-Christian Frank
-www.chfrank.net
+[Christian Frank] http://www.chfrank.net/
