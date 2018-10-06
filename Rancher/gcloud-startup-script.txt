@@ -1,0 +1,6 @@
+#!/bin/sh
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
+#docker volume create --name rancher-var-lib --driver local
+docker run -d --rm -p 80:80 -p 443:443 -v rancher-var-lib:/var/lib/rancher/ rancher/rancher:latest
+exit 0

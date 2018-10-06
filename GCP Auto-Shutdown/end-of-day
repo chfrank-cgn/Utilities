@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Script to terminate backup instance, invoked from rc.local
+
+sync ; sync 
+
+sleep 10
+
+/sbin/shutdown -h now
+
+exit 0
+
