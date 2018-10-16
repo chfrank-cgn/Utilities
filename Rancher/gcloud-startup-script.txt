@@ -4,4 +4,5 @@ sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
 #docker volume create --name rancher-var-lib --driver local
 #docker volume create --name syslog-ng-etc --driver local
 docker run -d --rm -p 80:80 -p 443:443 -v rancher-var-lib:/var/lib/rancher/ rancher/rancher:latest
+docker run -d --rm -p 514:514/udp -p 601:601 -v syslog-ng-etc:/etc/syslog-ng/ balabit/syslog-ng:latest
 exit 0
