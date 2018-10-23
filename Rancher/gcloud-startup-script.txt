@@ -4,6 +4,7 @@ sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
 #docker volume create --name rancher-var-lib --driver local
 #docker volume create --name syslog-ng-etc --driver local
 #docker volume create --name syslog-ng-log --driver local --opt device=tmpfs
+docker pull rancher/rancher:latest
 docker run -d --rm --log-driver=gcplogs -p 6379:6379 --env 'REDIS_PASSWORD=syslog-ng' sameersbn/redis:4.0.9-1
 docker run -d --rm --log-driver=gcplogs -p 80:80 -p 443:443 -v rancher-var-lib:/var/lib/rancher/ rancher/rancher:stable
 docker run -d --rm --log-driver=gcplogs -p 514:514/udp -p 601:601 -v syslog-ng-log:/var/log -v syslog-ng-etc:/etc/syslog-ng/:ro balabit/syslog-ng:latest
