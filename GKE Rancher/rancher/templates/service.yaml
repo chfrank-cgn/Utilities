@@ -1,0 +1,26 @@
+---
+# Source: rancher/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher
+  namespace: cattle-demo
+  labels:
+    app: rancher
+    chart: rancher-2019.1.2
+    heritage: Tiller
+    release: rancher
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+  selector:
+    app: rancher
+
