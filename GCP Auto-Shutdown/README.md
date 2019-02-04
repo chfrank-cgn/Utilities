@@ -1,7 +1,7 @@
 # GCP Auto-Shutdown
 
 If you have instances on GCP that you don't need over night, you could either mark
-the preemtible (with a slight risk of premature shutdown) or use the attached files
+them preemtible (with a slight risk of premature shutdown) or use the attached files
 
 On Debian:
 * Install at 
